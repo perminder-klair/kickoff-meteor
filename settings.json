@@ -1,1 +1,15 @@
-{}
+{
+  "adminEmail": "",
+  "AWS": {
+    "s3Key": "",
+    "s3Secret": "",
+    "s3Bucket": "",
+    "s3Region": "us-west-2"
+  },
+  "facebook": {
+    "appId": "",
+    "secret": ""
+  },
+  "mailgunUrl": "",
+  "public": {}
+}

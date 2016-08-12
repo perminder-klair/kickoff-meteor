@@ -16,8 +16,11 @@ es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 react-meteor-data
+accounts-base
 accounts-ui
 accounts-password
+useraccounts:semantic-ui
+email
 
 check
 underscore
@@ -28,3 +31,14 @@ static-html
 semantic:ui-css
 seba:minifiers-autoprefixer
 fourseven:scss
+fortawesome:fontawesome
+dburles:collection-helpers
+reywood:publish-composite
+tmeasday:publish-counts
+edgee:slingshot
+meteorhacks:ssr
+momentjs:moment
+service-configuration
+anti:fake
+random
+ovcharik:alertifyjs
