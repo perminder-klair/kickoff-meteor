@@ -12,7 +12,7 @@ FlowRouter.route('/links', {
     name: 'Links.list',
     action() {
         mount(App, {
-            main: <LinksList/>
+            main: <LinksListPage/>
         });
     }
 });
@@ -21,7 +21,7 @@ FlowRouter.route('/links/create', {
     name: 'Links.create',
     action() {
         mount(App, {
-            main: <LinksCreate/>
+            main: <LinksCreatePage/>
         });
     }
 });
@@ -30,7 +30,7 @@ FlowRouter.route('/link/:id/', {
     name: 'Links.view',
     action(params) {
         mount(App, {
-            main: <LinksView id={params.id}/>
+            main: <LinksViewPage id={params.id}/>
         });
     }
 });
@@ -39,7 +39,7 @@ FlowRouter.route('/link/edit/:id/', {
     name: 'Links.edit',
     action(params) {
         mount(App, {
-            main: <LinksEdit id={params.id}/>
+            main: <LinksEditPage id={params.id}/>
         });
     }
 });

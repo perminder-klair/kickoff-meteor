@@ -63,12 +63,12 @@ export default createContainer(function () {
         let query = FlowRouter.getQueryParam('query');
         let page = FlowRouter.getQueryParam('page');
         let skip = (page-1) * limit;
-        //console.log('query', query);
+
         //get total count of items from server
-        totalItems = Counts.get('total.venues');
+        totalItems = Counts.get('total.links');
 
         //to request data from db via server, for security from publications
-        Meteor.subscribe('venues', limit, query, skip);
+        Meteor.subscribe('links', limit, skip, query);
     });
 
     return {

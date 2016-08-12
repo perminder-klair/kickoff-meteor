@@ -1,6 +1,9 @@
 import { Meteor } from 'meteor/meteor';
-import { Links } from '../links.js';
+import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { Counts } from 'meteor/tmeasday:publish-counts';
 import _ from 'underscore';
+
+import { Links } from '../links.js';
 
 Meteor.publish('links', function linksPublication(limit=50, skip=0, query) {
     new SimpleSchema({
@@ -19,6 +22,8 @@ Meteor.publish('links', function linksPublication(limit=50, skip=0, query) {
             ]
         };
     }
+
+    Counts.publish(this, 'total.links', Links.find(find));
 
     return Links.find({}, {sort: {createdAt: -1}, fields: Links.publicFields});
 });

@@ -55,6 +55,6 @@ export default VenuesEditContainer = createContainer((props) => {
     return {
         loading: !handle.ready(),
         user: Meteor.user(),
-        venue: Venues.findOne(props.id) //=== {_id: props.id}
+        venue: Venues.findOne(props.id)
     };
 }, LinksEditPage);
