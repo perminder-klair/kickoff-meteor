@@ -1,33 +1,23 @@
-import React, { Component } from 'react';
-//
-//export default class MainLayout extends Component {
-//    render() {
-//        return (
-//            <div>
-//                <header>
-//                    This is our header
-//                </header>
-//                <main>
-//                    {this.props.content}
-//                </main>
-//            </div>
-//        );
-//    }
-//}
-//
+import React, { Component, PropTypes } from 'react';
+import { createContainer } from 'meteor/react-meteor-data';
 
-const App = ({content}) => (
-    <div>
-        <div className="ui fixed inverted menu">
-            <div className="ui container">
-                <a href="#" className="header item">
-                    Meteor Starter
-                </a>
-                <a href="#" className="item">Home</a>
+class App extends Component {
+    render() {
+        return (
+            <div>
+                <Header user={this.props.user}/>
+                {this.props.content}
             </div>
-        </div>
-        {content}
-    </div>
-);
+        );
+    }
+}
 
-export default App;
+App.propTypes = {
+    user: PropTypes.object
+};
+
+export default createContainer(() => {
+    return {
+        user: Meteor.user()
+    };
+}, App);

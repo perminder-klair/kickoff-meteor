@@ -27,6 +27,10 @@ Links.schema = new SimpleSchema({
         type: String,
         max: 200
     },
+    owner: {
+        type: String,
+        max: 200
+    },
     createdAt: {
         type: Date,
         denyUpdate: true
@@ -38,6 +42,7 @@ Links.attachSchema(Links.schema);
 Links.publicFields = {
     text: 1,
     url: 1,
+    owner: 1,
     createdAt: 1
 };
 

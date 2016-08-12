@@ -1,7 +1,7 @@
 {
   "servers": [
     {
-      "host": "188.226.179.18",
+      "host": "",
       "username": "root",
       "pem": "~/.ssh/id_rsa"
     }
@@ -14,12 +14,12 @@
 
   "enableUploadProgressBar": true,
 
-  "appName": "smooze",
+  "appName": "meteor-app",
   "app": "../../",
 
   "env": {
-    "ROOT_URL": "http://www.smooze.me",
-    "PORT": "1992",
+    "ROOT_URL": "http://www.mysite.com",
+    "PORT": "1991",
     "MONGO_URL": ""
   },
 

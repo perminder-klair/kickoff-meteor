@@ -9,7 +9,7 @@ import Link from '../../links/components/Link.jsx';
 import AccountsUIWrapper from '../layouts/AccountsUIWrapper.jsx';
 
 // App component - represents the whole app
-class MainPage extends Component {
+class DashboardPage extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
@@ -51,7 +51,7 @@ class MainPage extends Component {
     }
 }
 
-MainPage.propTypes = {
+DashboardPage.propTypes = {
     links: PropTypes.array.isRequired
 };
 
@@ -62,4 +62,4 @@ export default createContainer(() => {
         links: Links.find({}).fetch(),
         currentUser: Meteor.user()
     };
-}, MainPage);
+}, DashboardPage);

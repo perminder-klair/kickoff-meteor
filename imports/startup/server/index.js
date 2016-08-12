@@ -10,3 +10,9 @@ import './security.js';
 // This defines all the collections, publications and methods that the application provides
 // as an API to the client.
 import './register-api.js';
+
+// Set up mail server settings.
+import './mail.js';
+
+// Set up some social logins keys settings.
+import './social-logins.js';
