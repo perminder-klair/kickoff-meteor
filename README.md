@@ -1,5 +1,28 @@
 # Meteor 1.4 Starting Point
 
+A boilerplate made using MeteorJs, ReactJs and Semantic UI.
+
+### Pages included to quick start a project:
+
+- Welcome page
+- Links
+- List Links
+- Create link
+- Update link
+- Delete link
+- Image upload for link (Amazon S3)
+- Users
+- Users list
+- User profile view
+- User links list
+- User subscribe
+- User profile edit
+- User image upload using (Amazon S3)
+- Login
+- Sign up
+- Logout
+- Contact page
+
 ## Requirements
 - NodeJs
 - MeteorJs
