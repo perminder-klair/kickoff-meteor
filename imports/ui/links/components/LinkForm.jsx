@@ -1,33 +1,25 @@
 import React, { Component, PropTypes } from 'react';
-//import ReactDOM from 'react-dom';
 
-import ImageUploadGroup from '../../global/elements/ImageUploadGroup';
+import ImageUploadGroup from '../../core/elements/ImageUploadGroup';
 
-export default class VenueForm extends Component {
+export default class LinkForm extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             title: !_.isUndefined(props.venue) ? props.venue.title : '',
             description: !_.isUndefined(props.venue) ? props.venue.description : '',
-            featuredImage: !_.isUndefined(props.venue) ? props.venue.featuredImage : null,
-            images: []
+            featuredImage: !_.isUndefined(props.venue) ? props.venue.featuredImage : null
         };
     }
 
     handleSubmit(event) {
         event.preventDefault();
 
-        // Find the text field via the React ref
-        //const title = ReactDOM.findDOMNode(this.refs.title).value.trim();
-        //const description = ReactDOM.findDOMNode(this.refs.description).value.trim();
-        let {title, description, featuredImage} = this.state;
-
-        this.props.handleSubmit({title, description, featuredImage});
+        this.props.handleSubmit(this.state);
     }
 
     render() {
-        //console.log(this.state.venue);
         return (
             <form>
                 <label>title</label>
@@ -56,7 +48,7 @@ export default class VenueForm extends Component {
     }
 }
 
-VenueForm.propTypes = {
-    venue: PropTypes.object,
+LinkForm.propTypes = {
+    link: PropTypes.object,
     handleSubmit: PropTypes.func
 };

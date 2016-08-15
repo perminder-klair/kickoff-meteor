@@ -20,7 +20,7 @@ class SearchPage extends Component {
             <div className="ui container">
                 <h1 className="ui header">Search result</h1>
                 {links.count !== 0 ?
-                    <div class="ui items">
+                    <div className="ui items">
                         {links.map(link => <LinkItem key={link._id} link={link}/>)}
                     </div>
                     :

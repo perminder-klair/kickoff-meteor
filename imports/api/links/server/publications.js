@@ -27,3 +27,11 @@ Meteor.publish('links', function linksPublication(limit=50, skip=0, query) {
 
     return Links.find({}, {sort: {createdAt: -1}, fields: Links.publicFields});
 });
+
+Meteor.publish('links.single', function linksSinglePublication(id) {
+    new SimpleSchema({
+        id: { type: String }
+    }).validate({ id });
+
+    return Links.find({_id: id}, {fields: Links.publicFields});
+});

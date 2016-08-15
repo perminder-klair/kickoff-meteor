@@ -3,37 +3,38 @@ import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
+import Loading from '../../core/components/Loading.jsx';
+
 //to get database
-import {Venues} from '../../../api/venues/venues';
+import { Links } from '../../../api/links/links';
 
 class LinksViewPage extends Component {
-    deleteVenue() {
-        Meteor.call('venues.delete', this.props.venue._id, (err) => {
+    delete() {
+        Meteor.call('links.remove', this.props.venue._id, (err) => {
             if (err) {
                 console.log(err);
+                alertify.error(err.reason);
             } else {
-                FlowRouter.go('Venues');
+                FlowRouter.go('Links.list');
+                alertify.success('Link deleted successfully!');
             }
         });
     }
 
     render() {
-        //console.log(this.props.venue);
-        //console.log(this.props.loading);
-        let {venue} =  this.props;
+        let { link } =  this.props;
 
         if (this.props.loading) {
-            return (
-                <div>loading...</div>
-            )
+            return <Loading />
         } else {
-            let isOwner = this.props.user._id === venue.owner;
+            let isOwner = this.props.user._id === link.owner;
+
             return (
-                <div >
-                    <h1>Venue title: {venue.title}</h1>
-                    <p>{venue.customName()}</p>
-                    {isOwner ? <a className="btn btn-default" href={FlowRouter.path('Venues.edit', {id: venue._id})}>edit</a>:''}
-                    {isOwner ? <a className="btn btn-default" onClick={this.deleteVenue.bind(this)}>delete</a>:''}
+                <div className="ui container">
+                    <h1 className="ui header">Venue: {link.text}</h1>
+                    <p>{link.url}</p>
+                    {isOwner ? <a className="ui primary button" href={FlowRouter.path('Links.update', {id: link._id})}>edit</a>:''}
+                    {isOwner ? <a className="ui button" onClick={this.delete.bind(this)}>delete</a>:''}
                 </div>
             )
         }
@@ -45,15 +46,16 @@ LinksViewPage.defaultProps = {
 };
 
 LinksViewPage.propTypes = {
-    venue: PropTypes.object,
+    link: PropTypes.object,
     loading: PropTypes.bool
 };
 
-export default VenuesViewContainer = createContainer((props) => {
-    let handle = Meteor.subscribe('venues.single', props.id);
+export default createContainer((props) => {
+    let handle = Meteor.subscribe('links.single', props.id);
+
     return {
         loading: !handle.ready(),
         user: Meteor.user(),
-        venue: Venues.findOne(props.id) //=== {_id: props.id}
+        link: Links.findOne(props.id)
     };
 }, LinksViewPage);

@@ -6,7 +6,7 @@ import App from '../core/layouts/App.jsx';
 import LinksListPage from './pages/LinksListPage.jsx';
 import LinksCreatePage from './pages/LinksCreatePage.jsx';
 import LinksViewPage from './pages/LinksViewPage.jsx';
-import LinksEditPage from './pages/LinksEditPage.jsx';
+import LinksUpdatePage from './pages/LinksUpdatePage.jsx';
 
 FlowRouter.route('/links', {
     name: 'Links.list',
@@ -26,20 +26,20 @@ FlowRouter.route('/links/create', {
     }
 });
 
+FlowRouter.route('/link/update/:id/', {
+    name: 'Links.update',
+    action(params) {
+        mount(App, {
+            main: <LinksUpdatePage id={params.id}/>
+        });
+    }
+});
+
 FlowRouter.route('/link/:id/', {
     name: 'Links.view',
     action(params) {
         mount(App, {
             main: <LinksViewPage id={params.id}/>
-        });
-    }
-});
-
-FlowRouter.route('/link/edit/:id/', {
-    name: 'Links.edit',
-    action(params) {
-        mount(App, {
-            main: <LinksEditPage id={params.id}/>
         });
     }
 });
