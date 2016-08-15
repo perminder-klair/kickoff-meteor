@@ -10,7 +10,7 @@ class UsersListPage extends Component {
         return (
             <div className="ui container">
                 <h1 className="ui header">All users</h1>
-                <div class="ui items">
+                <div className="ui items">
                     {users.map(user => <UserListItem key={user._id} user={user}/>)}
                 </div>
             </div>

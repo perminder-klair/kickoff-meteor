@@ -26,7 +26,7 @@ export default class SearchForm extends Component {
                     placeholder="Search..."
                     value={this.state.query}
                     onChange={(e) => this.setState({query: e.target.value})}/>
-                <button onClick={this.handleSubmit.bind(this)}><i class="search link icon"/></button>
+                <button onClick={this.handleSubmit.bind(this)}><i className="search link icon"/></button>
 
             </div>
         )

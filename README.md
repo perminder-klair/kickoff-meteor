@@ -1,4 +1,4 @@
-# Meteor 1.3 Starting Point
+# Meteor 1.4 Starting Point
 
 ## Requirements
 - NodeJs
@@ -35,6 +35,8 @@ npm run lint
 - meteor add accounts-password - to able to login using password
 - meteor add service-configuration - to login using social services
 - meteor add accounts-facebook - to login using facebook
+- meteor add useraccounts:semantic-ui - login ui
+- meteor add useraccounts:core - meteor accounts ui package
 - https://github.com/aldeed/meteor-simple-schema - db validation library
 - meteor add aldeed:collection2 -  for making validations work
 - meteor add dburles:collection-helpers - to allow helpers in db file

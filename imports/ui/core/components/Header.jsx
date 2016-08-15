@@ -29,9 +29,8 @@ export default class Header extends Component {
                     {_.isNull(user) ?
                         <a href={FlowRouter.path("Signup")} className="item">Signup</a>
                         :
-                        <a href={FlowRouter.path("Profile.view")} className="item">Profile</a>
+                        <a onClick={this.logout.bind(this)} className="item">Logout</a>
                     }
-                    <a onClick={this.logout.bind(this)} className="item">Logout</a>
                     <div className="right menu">
                         <div className="item">
                             <SearchForm />

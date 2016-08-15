@@ -28,7 +28,7 @@ class ProfileViewPage extends Component {
                     <div className="ui divider"></div>
                     <h1 className="ui header">Links:</h1>
                     {links.count !== 0 ?
-                        <div class="ui items">
+                        <div className="ui items">
                             {links.map(link => <LinkItem key={link._id} link={link}/>)}
                         </div>
                         :

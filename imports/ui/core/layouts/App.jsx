@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 
+import Header from '../components/Header.jsx';
+
 class App extends Component {
     render() {
         return (

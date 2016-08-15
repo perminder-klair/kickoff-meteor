@@ -25,11 +25,13 @@ Links.schema = new SimpleSchema({
     },
     url: {
         type: String,
-        max: 200
+        max: 200,
+        optional: true
     },
     owner: {
         type: String,
-        max: 200
+        max: 200,
+        optional: true
     },
     createdAt: {
         type: Date,

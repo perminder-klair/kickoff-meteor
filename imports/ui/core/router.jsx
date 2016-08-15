@@ -69,7 +69,7 @@ FlowRouter.route('/signup', {
     name: 'Signup',
     action() {
         mount(App, {
-            main: <LoginContainer type="signUp"/>
+            main: <LoginPage type="signUp"/>
         });
     }
 });
