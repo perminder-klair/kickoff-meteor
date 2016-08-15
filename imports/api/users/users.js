@@ -142,15 +142,16 @@ Meteor.users.publicFields = {
 Meteor.users.helpers({
     fullName() {
         if (_.isNull(this.profile.firstName)) {
-            return this.username;
+            if (!_.isUndefined(this.username)) {
+                return this.username;
+            } else {
+                return this.emails[0].address;
+            }
         } else {
             return `${this.profile.firstName} ${this.profile.lastName}`;
         }
     },
-    image() {
-        return '/images/face-placeholder.jpg';
-    },
-    venues() {
+    links() {
         return Links.find({owner: this._id}, {sort: {createdAt: -1}, fields: Links.publicFields});
     }
 });

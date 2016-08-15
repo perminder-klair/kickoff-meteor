@@ -1,15 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 
 import ImageUploadGroup from '../../core/elements/ImageUploadGroup';
+import TextInputGroup from '../../core/elements/TextInputGroup';
 
 export default class LinkForm extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            title: !_.isUndefined(props.venue) ? props.venue.title : '',
-            description: !_.isUndefined(props.venue) ? props.venue.description : '',
-            featuredImage: !_.isUndefined(props.venue) ? props.venue.featuredImage : null
+            text: !_.isUndefined(props.link) ? props.link.text : '',
+            url: !_.isUndefined(props.link) ? props.link.url : '',
+            featuredImage: !_.isUndefined(props.link) ? props.link.featuredImage : null
         };
     }
 
@@ -21,28 +22,21 @@ export default class LinkForm extends Component {
 
     render() {
         return (
-            <form>
-                <label>title</label>
-                <input
-                    type="text"
-                    ref="title"
-                    value={this.state.title}
-                    onChange={(e) => this.setState({title: e.target.value})}/>
-
-                <label>description</label>
-                <input
-                    type="text"
-                    ref="description"
-                    value={this.state.description}
-                    onChange={(e) => this.setState({description: e.target.value})}/>
-
+            <form className="ui form">
+                <TextInputGroup
+                    label="Title"
+                    value={this.state.text}
+                    onChange={(e) => this.setState({text: e.target.value})} />
+                <TextInputGroup
+                    label="URL"
+                    value={this.state.url}
+                    onChange={(e) => this.setState({url: e.target.value})} />
                 <ImageUploadGroup
-                    label="featuredImage"
+                    label="Featured Image"
                     onChange={(e) => this.setState({featuredImage: e})}/>
-                {!_.isNull(this.state.featuredImage) ? <img className="img-responsive" src={this.state.featuredImage}/>:''}
+                {!_.isNull(this.state.featuredImage) ? <img className="ui small image" src={this.state.featuredImage}/>:''}
 
-
-                <button onClick={this.handleSubmit.bind(this)}>Submit</button>
+                <button className="ui primary button" onClick={this.handleSubmit.bind(this)}>Submit</button>
             </form>
         )
     }

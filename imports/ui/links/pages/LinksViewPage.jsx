@@ -4,6 +4,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import Loading from '../../core/components/Loading.jsx';
+import LinkImage from '../components/LinkImage';
 
 //to get database
 import { Links } from '../../../api/links/links';
@@ -31,7 +32,8 @@ class LinksViewPage extends Component {
 
             return (
                 <div className="ui container">
-                    <h1 className="ui header">Venue: {link.text}</h1>
+                    <h1 className="ui header">{link.text}</h1>
+                    <LinkImage link={link}/>
                     <p>{link.url}</p>
                     {isOwner ? <a className="ui primary button" href={FlowRouter.path('Links.update', {id: link._id})}>edit</a>:''}
                     {isOwner ? <a className="ui button" onClick={this.delete.bind(this)}>delete</a>:''}

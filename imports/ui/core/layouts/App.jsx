@@ -8,7 +8,9 @@ class App extends Component {
         return (
             <div>
                 <Header user={this.props.user}/>
-                {this.props.content}
+                <div className="main container">
+                    {this.props.main}
+                </div>
             </div>
         );
     }

@@ -6,11 +6,11 @@ import LinkItem from '../../links/components/LinkItem';
 import Loading from '../components/Loading';
 
 //to get database
-import {Links} from '../../../api/links/links';
+import { Links } from '../../../api/links/links';
 
 class SearchPage extends Component {
     render() {
-        let {links, loading} = this.props;
+        let { links, loading } = this.props;
 
         if (loading) {
             return <Loading/>;
@@ -19,13 +19,15 @@ class SearchPage extends Component {
         return (
             <div className="ui container">
                 <h1 className="ui header">Search result</h1>
-                {links.count !== 0 ?
-                    <div className="ui items">
-                        {links.map(link => <LinkItem key={link._id} link={link}/>)}
+                {links.length === 0 ?
+                    <div className="ui message">
+                        <div className="header">
+                            No links found.
+                        </div>
                     </div>
                     :
-                    <div className="ui message">
-                        <p>No results found.</p>
+                    <div className="ui items">
+                        {links.map(link => <LinkItem key={link._id} link={link}/>)}
                     </div>
                 }
             </div>
@@ -42,7 +44,7 @@ export default createContainer(function (params) {
     let {query} = params;
     let limit = 100;
 
-    //to request data from db via server, for security from publications
+    //to request data from db via server
     let handle = Meteor.subscribe('links', limit, 0, query);
 
     return {

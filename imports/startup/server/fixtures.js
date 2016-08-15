@@ -43,7 +43,8 @@ Meteor.startup(() => {
     if (Links.find().count() === 0) {
         const data = [
             {
-                url: 'http://www.amazon.co.uk'
+                url: 'http://www.amazon.co.uk',
+                text: 'Amazon'
             }
         ];
 
@@ -51,8 +52,9 @@ Meteor.startup(() => {
         data.forEach((list) => {
             Links.insert({
                 url: list.url,
+                text: list.text,
                 createdOn: timestamp,
-                checked: true
+                isActive: true
             });
         });
     }

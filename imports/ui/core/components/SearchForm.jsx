@@ -1,12 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import _ from 'underscore';
 
 export default class SearchForm extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            query: ''
+            query: !_.isUndefined(FlowRouter.getQueryParam('query')) ? FlowRouter.getQueryParam('query') : ''
         };
     }
 

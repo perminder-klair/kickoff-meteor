@@ -15,7 +15,7 @@ class LinksCollection extends Mongo.Collection {
     }
 }
 
-export const Links = new LinksCollection('Links');
+export const Links = new LinksCollection('links');
 
 Links.schema = new SimpleSchema({
     text: {
@@ -28,6 +28,11 @@ Links.schema = new SimpleSchema({
         max: 200,
         optional: true
     },
+    featuredImage: {
+        type: String,
+        max: 200,
+        optional: true
+    },
     owner: {
         type: String,
         max: 200,
@@ -36,6 +41,10 @@ Links.schema = new SimpleSchema({
     createdAt: {
         type: Date,
         denyUpdate: true
+    },
+    isActive: {
+        type: Boolean,
+        defaultValue: true
     }
 });
 
@@ -44,6 +53,7 @@ Links.attachSchema(Links.schema);
 Links.publicFields = {
     text: 1,
     url: 1,
+    featuredImage: 1,
     owner: 1,
     createdAt: 1
 };

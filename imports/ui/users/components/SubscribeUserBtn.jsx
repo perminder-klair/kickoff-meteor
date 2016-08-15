@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
+import _ from 'underscore';
 
-class SubscribeUser extends Component {
+class SubscribeUserBtn extends Component {
     subscribe() {
         Meteor.call('users.subscribe', this.props.user._id, (err) => {
             if (err) {
@@ -24,35 +25,34 @@ class SubscribeUser extends Component {
     }
 
     render() {
-        //console.log(this.props.user);
-        //console.log(this.props.currentUser);
         let {user, currentUser} = this.props;
+        let subscribersCount = !_.isUndefined(user.subscribersCount) ? user.subscribersCount : 0;
 
         if (!_.isNull(currentUser) && !_.isUndefined(currentUser.subscribedTo) && _.indexOf(currentUser.subscribedTo, user._id) !== -1) {
-            //is in array!!!!
+            //is in array
             return (
-                <button className="btn btn-success" onClick={this.unSubscribe.bind(this)}>subscribed ({this.props.user.subscribersCount})</button>
+                <button className="ui secondary button" onClick={this.unSubscribe.bind(this)}>subscribed ({subscribersCount})</button>
             )
         } else {
-            //its not in array
+            //is not in array
             return (
-                <button className="btn btn-default" onClick={this.subscribe.bind(this)}>subscribe ({this.props.user.subscribersCount})</button>
+                <button className="ui primary button" onClick={this.subscribe.bind(this)}>subscribe ({subscribersCount})</button>
             )
         }
     }
 }
 
-SubscribeUser.defaultProps = {
+SubscribeUserBtn.defaultProps = {
     user: {}
 };
 
-SubscribeUser.propTypes = {
+SubscribeUserBtn.propTypes = {
     user: PropTypes.object.isRequired,
     currentUser: PropTypes.object
 };
 
-export default createContainer((props) => {
+export default createContainer(() => {
     return {
         currentUser: Meteor.user()
     };
-}, SubscribeUser);
+}, SubscribeUserBtn);

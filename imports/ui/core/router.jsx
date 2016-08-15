@@ -1,4 +1,4 @@
-import {Meteor} from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { mount } from 'react-mounter';
@@ -24,11 +24,11 @@ let guestsOnly = function (context, redirect) {
 };
 
 FlowRouter.triggers.enter([loggedInOnly], {
-    only: ['List.create', 'List.edit', 'Profile.view']
+    only: ['Links.create', 'Links.update', 'Profile.view', 'Profile.edit']
 });
 
 FlowRouter.triggers.enter([guestsOnly], {
-    only: ['Login']
+    only: ['Login', 'Signup']
 });
 
 //global subscriptions by default meteor send user with 3 fields, but we asking for all fields
@@ -39,7 +39,7 @@ FlowRouter.subscriptions = function () {
 FlowRouter.notFound = {
     action: function () {
         mount(App, {
-            main: <NotFoundContainer/>
+            main: <NotFoundPage/>
         });
     }
 };
@@ -51,7 +51,7 @@ FlowRouter.route('/', {
     name: 'Dashboard',
     action() {
         mount(App, {
-            content: <DashboardPage/>
+            main: <DashboardPage/>
         });
     }
 });
@@ -65,7 +65,7 @@ FlowRouter.route('/login', {
     }
 });
 
-FlowRouter.route('/signup', {
+FlowRouter.route('/sign-up', {
     name: 'Signup',
     action() {
         mount(App, {

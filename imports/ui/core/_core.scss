@@ -10,3 +10,12 @@ body {
   height: 100%;
   min-height: 100vh;
 }
+
+.text {
+  &.center {}
+  text-align: center;
+}
+
+.main.container {
+  margin-top: 55px;
+}
