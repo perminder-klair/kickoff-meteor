@@ -1,13 +1,15 @@
 import { Meteor } from 'meteor/meteor';
-import { check } from 'meteor/check';
 import { Email } from 'meteor/email';
 import { SSR } from 'meteor/meteorhacks:ssr';
+import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 //https://docs.meteor.com/api/email.html
 Meteor.methods({
     'contact.send'(doc) {
-        //check(title, String);
-        //check(description, String);
+        new SimpleSchema({
+            doc: { type: Object }
+        }).validate({ doc });
+
         SSR.compileTemplate('htmlEmail', Assets.getText('emails/contact-html.html'));
 
         Email.send({
@@ -17,5 +19,5 @@ Meteor.methods({
             html: SSR.render('htmlEmail', doc)
         });
 
-    },
+    }
 });

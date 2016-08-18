@@ -1,8 +1,9 @@
 {
-  "name": "meteor-start-1.4",
+  "name": "meteor-starting-point",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor",
+    "lint": "eslint ."
   },
   "dependencies": {
     "classnames": "^2.2.5",
@@ -14,15 +15,20 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
-    "eslint": "^2.3.0",
-    "eslint-config-airbnb": "^6.1.0",
-    "eslint-plugin-meteor": "^3.0.1",
-    "eslint-plugin-react": "^4.0.0"
+    "babel-eslint": "^6.1.0",
+    "eslint": "^2.13.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-import-resolver-meteor": "^0.2.4",
+    "eslint-plugin-import": "^1.10.3",
+    "eslint-plugin-jsx-a11y": "^1.5.3",
+    "eslint-plugin-meteor": "^3.6.0",
+    "eslint-plugin-react": "^5.2.2",
+    "shell-source": "^1.1.0"
   },
   "eslintConfig": {
+    "parser": "babel-eslint",
     "parserOptions": {
-      "ecmaVersion": 6,
-      "sourceType": "module"
+      "allowImportExportEverywhere": true
     },
     "plugins": [
       "meteor"
@@ -32,16 +38,20 @@
       "plugin:meteor/recommended"
     ],
     "rules": {
+      "no-underscore-dangle": "off",
       "meteor/eventmap-params": [
-        2,
+        "error",
         {
           "eventParamName": "event",
           "templateInstanceParamName": "instance"
         }
       ],
       "meteor/template-names": [
-        0
+        "off"
       ]
+    },
+    "settings": {
+      "import/resolver": "meteor"
     }
   }
 }

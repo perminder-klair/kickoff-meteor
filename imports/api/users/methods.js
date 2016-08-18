@@ -1,17 +1,18 @@
 import { Meteor } from 'meteor/meteor';
-import { check } from 'meteor/check';
+import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 Meteor.methods({
     'users.update'(id, doc) {
-        check(id, String);
-        check(doc, Object);
+        new SimpleSchema({
+            id: { type: String },
+            doc: { type: Object }
+        }).validate({ id, doc });
 
         // Make sure the user is logged in before inserting a task
         if (!Meteor.userId()) {
             throw new Meteor.Error('not-authorized');
         }
 
-        //console.log('method', doc);
         Meteor.users.update(id, {
             '$set': {
                 'profile.first_name': doc.first_name,
@@ -24,7 +25,9 @@ Meteor.methods({
         return true;
     },
     'users.subscribe'(userId) {
-        check(userId, String);
+        new SimpleSchema({
+            userId: { type: String }
+        }).validate({ userId });
 
         if (_.isNull(this.userId)) {
             //if not logged in
@@ -36,7 +39,6 @@ Meteor.methods({
             //if not logged in
             throw new Meteor.Error('not-allowed', 'Invalid users ID.');
         }
-        //console.log(currentUser);
 
         //increase followers and following count
         Meteor.users.update({_id: this.userId}, {
@@ -49,7 +51,9 @@ Meteor.methods({
         });
     },
     'users.unSubscribe'(userId) {
-        check(userId, String);
+        new SimpleSchema({
+            userId: { type: String }
+        }).validate({ userId });
 
         if (_.isNull(this.userId)) {
             //if not logged in
@@ -61,7 +65,6 @@ Meteor.methods({
             //if not logged in
             throw new Meteor.Error('not-allowed', 'Invalid users ID.');
         }
-        //console.log(currentUser);
 
         //increase followers and following count
         Meteor.users.update({_id: this.userId}, {

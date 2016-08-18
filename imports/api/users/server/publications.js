@@ -17,8 +17,9 @@ Meteor.publish('users.list', function usersListPublication() {
 
 Meteor.publish('user.links', function userLinksPublication(userId, limit=50) {
     new SimpleSchema({
-        userId: { type: String }
-    }).validate({ userId });
+        userId: { type: String },
+        limit: { type: Number }
+    }).validate({ userId, limit });
 
     return Links.find({isActive: true, owner: userId}, {sort: {createdAt: -1}, limit, fields: Links.publicFields});
 });

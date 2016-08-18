@@ -6,12 +6,11 @@ import _ from 'underscore';
 import { Links } from '../links.js';
 
 Meteor.publish('links', function linksPublication(limit=50, skip=0, query) {
-    //todo
-    //new SimpleSchema({
-    //    limit: { type: Number, optional: true },
-    //    skip: { type: Number, optional: true },
-    //    query: { type: String, optional: true }
-    //}).validate({ limit, skip, query });
+    new SimpleSchema({
+        limit: { type: Number },
+        skip: { type: Number },
+        query: { type: String, optional: true }
+    }).validate({ limit, skip, query });
 
     let find = {isActive: true};
     if (!_.isUndefined(query) && !_.isNull(query)) {
@@ -31,10 +30,9 @@ Meteor.publish('links', function linksPublication(limit=50, skip=0, query) {
 });
 
 Meteor.publish('links.single', function linksSinglePublication(id) {
-    //todo
-    //new SimpleSchema({
-    //    id: { type: String }
-    //}).validate({ id });
+    new SimpleSchema({
+        id: { type: String }
+    }).validate({ id });
 
     return Links.find({_id: id, isActive: true}, {fields: Links.publicFields});
 });

@@ -22,7 +22,6 @@ accounts-password@1.2.12
 useraccounts:semantic-ui
 email@1.1.16
 
-check@1.2.3
 underscore@1.0.9
 aldeed:simple-schema
 aldeed:collection2

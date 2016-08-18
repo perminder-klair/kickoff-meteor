@@ -1,12 +1,14 @@
 import { Meteor } from 'meteor/meteor';
-import { check } from 'meteor/check';
+import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import _ from 'underscore';
 
 import { Links } from './links.js';
 
 Meteor.methods({
     'links.insert'(doc) {
-        //check(url, String);todo
+        new SimpleSchema({
+            doc: { type: Object }
+        }).validate({ doc });
 
         // Make sure the user is logged in before inserting a task
         if (! Meteor.userId()) {
@@ -20,8 +22,10 @@ Meteor.methods({
     },
 
     'links.update'(linkId, doc) {
-        check(linkId, String);
-        //check(doc, Boolean);//todo
+        new SimpleSchema({
+            linkId: { type: String },
+            doc: { type: Object }
+        }).validate({ linkId, doc });
 
         // Make sure the user is logged in before inserting a task
         if (! Meteor.userId()) {
@@ -39,7 +43,9 @@ Meteor.methods({
     },
 
     'links.remove'(linkId) {
-        check(linkId, String);
+        new SimpleSchema({
+            linkId: { type: String }
+        }).validate({ linkId });
 
         // Make sure the user is logged in before inserting a task
         if (! Meteor.userId()) {
