@@ -1,6 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
+import React, { Component, PropTypes } from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import _ from 'underscore';
 
@@ -9,10 +8,7 @@ import LinkItem from '../../links/components/LinkItem';
 import ProfilePicture from '../components/ProfilePicture';
 import SubscribeUserBtn from '../components/SubscribeUserBtn';
 
-//to get database
-import { Links } from '../../../api/links/links';
-
-class ProfileViewPage extends Component {
+export default class ProfileViewPage extends Component {
     render() {
         if (_.isUndefined(this.props.user)) {
             return <Loading />
@@ -51,17 +47,3 @@ ProfileViewPage.propTypes = {
     links: PropTypes.array.isRequired,
     isCurrentUser: PropTypes.bool.isRequired
 };
-
-export default createContainer((props) => {
-    let userId = _.isUndefined(props.id) ? Meteor.userId() : props.id;
-
-    //ask server to send user data
-    Meteor.subscribe('users.single', userId);
-    Meteor.subscribe('user.links', userId, 50);
-
-    return {
-        user: Meteor.users.findOne(userId),
-        links: Links.find({}, {sort: {createdAt: -1}}).fetch(),
-        isCurrentUser: _.isUndefined(props.id)
-    };
-}, ProfileViewPage);

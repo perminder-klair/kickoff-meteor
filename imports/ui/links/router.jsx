@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { mount } from 'react-mounter';
 
-import App from '../core/layouts/App.jsx';
-import LinksListPage from './pages/LinksListPage.jsx';
+import AppContainer from '../core/containers/AppContainer.jsx';
+import LinksListContainer from './containers/LinksListContainer.jsx';
 import LinksCreatePage from './pages/LinksCreatePage.jsx';
-import LinksViewPage from './pages/LinksViewPage.jsx';
-import LinksUpdatePage from './pages/LinksUpdatePage.jsx';
+import LinksViewContainer from './containers/LinksViewContainer.jsx';
+import LinksUpdateContainer from './containers/LinksUpdateContainer.jsx';
 
 FlowRouter.route('/links', {
     name: 'Links.list',
     action() {
-        mount(App, {
-            main: <LinksListPage/>
+        mount(AppContainer, {
+            main: <LinksListContainer/>
         });
     }
 });
@@ -20,7 +20,7 @@ FlowRouter.route('/links', {
 FlowRouter.route('/links/create', {
     name: 'Links.create',
     action() {
-        mount(App, {
+        mount(AppContainer, {
             main: <LinksCreatePage/>
         });
     }
@@ -29,8 +29,8 @@ FlowRouter.route('/links/create', {
 FlowRouter.route('/link/update/:id/', {
     name: 'Links.update',
     action(params) {
-        mount(App, {
-            main: <LinksUpdatePage id={params.id}/>
+        mount(AppContainer, {
+            main: <LinksUpdateContainer id={params.id}/>
         });
     }
 });
@@ -38,8 +38,8 @@ FlowRouter.route('/link/update/:id/', {
 FlowRouter.route('/link/:id/', {
     name: 'Links.view',
     action(params) {
-        mount(App, {
-            main: <LinksViewPage id={params.id}/>
+        mount(AppContainer, {
+            main: <LinksViewContainer id={params.id}/>
         });
     }
 });

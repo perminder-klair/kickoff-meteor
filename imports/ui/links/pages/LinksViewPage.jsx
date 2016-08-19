@@ -1,15 +1,11 @@
 import { Meteor } from 'meteor/meteor'
 import React, { Component, PropTypes } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import Loading from '../../core/components/Loading.jsx';
 import LinkImage from '../components/LinkImage';
 
-//to get database
-import { Links } from '../../../api/links/links';
-
-class LinksViewPage extends Component {
+export default class LinksViewPage extends Component {
     delete() {
         Meteor.call('links.remove', this.props.venue._id, (err) => {
             if (err) {
@@ -51,13 +47,3 @@ LinksViewPage.propTypes = {
     link: PropTypes.object,
     loading: PropTypes.bool
 };
-
-export default createContainer((props) => {
-    let handle = Meteor.subscribe('links.single', props.id);
-
-    return {
-        loading: !handle.ready(),
-        user: Meteor.user(),
-        link: Links.findOne(props.id)
-    };
-}, LinksViewPage);

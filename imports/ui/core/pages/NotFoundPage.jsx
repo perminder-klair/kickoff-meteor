@@ -1,11 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 
-export default class NotFoundPage extends Component {
-    render() {
-        return (
-            <div>
-                <h1>Page your looking for is not found.</h1>
-            </div>
-        )
-    }
-}
+const NotFoundPage = () => (
+    <div className="ui container ">
+        <h1 className="ui header">Page your looking for is not found.</h1>
+    </div>
+);
+
+export default NotFoundPage;

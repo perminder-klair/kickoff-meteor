@@ -1,15 +1,11 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import { createContainer } from 'meteor/react-meteor-data';
 
 import LinkForm from '../components/LinkForm.jsx';
 import Loading from '../../core/components/Loading.jsx';
 
-//to get database
-import { Links } from '../../../api/links/links';
-
-class LinksUpdatePage extends Component {
+export default class LinksUpdatePage extends Component {
     handleSubmit(doc) {
         Meteor.call('links.update', this.props.link._id, doc, (err) => {
             if (!err) {
@@ -48,13 +44,3 @@ LinksUpdatePage.propTypes = {
     link: PropTypes.object,
     loading: PropTypes.bool
 };
-
-export default createContainer((props) => {
-    let handle = Meteor.subscribe('venues.single', props.id);
-
-    return {
-        loading: !handle.ready(),
-        user: Meteor.user(),
-        link: Links.findOne(props.id)
-    };
-}, LinksUpdatePage);

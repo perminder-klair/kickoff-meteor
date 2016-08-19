@@ -1,16 +1,12 @@
+import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
 import { Tracker } from 'meteor/tracker'
-import { createContainer } from 'meteor/react-meteor-data';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Counts } from 'meteor/tmeasday:publish-counts';
-import { Meteor } from 'meteor/meteor';
 
 import LinkItem from '../components/LinkItem';
 
-//to get database
-import { Links } from '../../../api/links/links';
-
-class LinksListPage extends Component {
+export default class LinksListPage extends Component {
     pagination() {
         let pagesCount = this.props.totalItems / this.props.limit;
         var rows = [];
@@ -56,26 +52,3 @@ LinksListPage.propTypes = {
     totalItems: PropTypes.number.isRequired,
     limit: PropTypes.number.isRequired
 };
-
-export default createContainer(function () {
-    let limit = 2;
-    let totalItems = 0;
-
-    Tracker.autorun(function () {
-        let query = FlowRouter.getQueryParam('query');
-        let page = FlowRouter.getQueryParam('page');
-        let skip = (page-1) * limit;
-
-        //to request data from db via server, for security from publications
-        Meteor.subscribe('links', limit, skip, query);
-
-        //get total count of items from server
-        totalItems = Counts.get('total.links');
-    });
-
-    return {
-        links: Links.find({}, {sort: {createdAt: -1}}).fetch(),//this is local query
-        totalItems,
-        limit
-    };
-}, LinksListPage);

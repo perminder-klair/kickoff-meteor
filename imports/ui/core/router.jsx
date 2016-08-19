@@ -4,10 +4,10 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { mount } from 'react-mounter';
 
 // route components
-import App from './layouts/App';
+import AppContainer from './containers/AppContainer';
 import DashboardPage from './pages/DashboardPage';
 import ContactPage from './pages/ContactPage';
-import SearchPage from './pages/SearchPage';
+import SearchContainer from './containers/SearchContainer';
 import LoginPage from './pages/LoginPage';
 import NotFoundPage from './pages/NotFoundPage';
 
@@ -38,7 +38,7 @@ FlowRouter.subscriptions = function () {
 
 FlowRouter.notFound = {
     action: function () {
-        mount(App, {
+        mount(AppContainer, {
             main: <NotFoundPage/>
         });
     }
@@ -50,7 +50,7 @@ FlowRouter.notFound = {
 FlowRouter.route('/', {
     name: 'Dashboard',
     action() {
-        mount(App, {
+        mount(AppContainer, {
             main: <DashboardPage/>
         });
     }
@@ -59,7 +59,7 @@ FlowRouter.route('/', {
 FlowRouter.route('/login', {
     name: 'Login',
     action() {
-        mount(App, {
+        mount(AppContainer, {
             main: <LoginPage type="signIn"/>
         });
     }
@@ -68,7 +68,7 @@ FlowRouter.route('/login', {
 FlowRouter.route('/sign-up', {
     name: 'Signup',
     action() {
-        mount(App, {
+        mount(AppContainer, {
             main: <LoginPage type="signUp"/>
         });
     }
@@ -77,7 +77,7 @@ FlowRouter.route('/sign-up', {
 FlowRouter.route('/contact', {
     name: 'Contact',
     action() {
-        mount(App, {
+        mount(AppContainer, {
             main: <ContactPage/>
         });
     }
@@ -86,8 +86,8 @@ FlowRouter.route('/contact', {
 FlowRouter.route('/search', {
     name: 'Search',
     action(params, queryParams) {
-        mount(App, {
-            main: <SearchPage query={queryParams.query}/>
+        mount(AppContainer, {
+            main: <SearchContainer query={queryParams.query}/>
         });
     }
 });

@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { mount } from 'react-mounter';
 
-import App from '../core/layouts/App.jsx';
-import ProfileViewPage from '../../ui/users/pages/ProfileViewPage.jsx';
-import ProfileEditPage from '../../ui/users/pages/ProfileEditPage.jsx';
-import UsersListPage from '../../ui/users/pages/UsersListPage.jsx';
+import AppContainer from '../core/containers/AppContainer.jsx';
+import ProfileViewContainer from '../../ui/users/containers/ProfileViewContainer.jsx';
+import ProfileEditContainer from '../../ui/users/containers/ProfileEditContainer.jsx';
+import UsersListContainer from '../../ui/users/containers/UsersListContainer.jsx';
 
 FlowRouter.route('/user/:id', {
     name: 'User.view',
     action(params) {
-        mount(App, {
+        mount(AppContainer, {
             main: <ProfileViewPage id={params.id}/>
         });
     }
@@ -19,28 +19,26 @@ FlowRouter.route('/user/:id', {
 FlowRouter.route('/profile', {
     name: 'Profile.view',
     action() {
-        mount(App, {
-            main: <ProfileViewPage />
+        mount(AppContainer, {
+            main: <ProfileViewContainer />
         });
     }
 });
-
 
 FlowRouter.route('/profile/edit', {
     name: 'Profile.edit',
     action() {
-        mount(App, {
-            main: <ProfileEditPage />
+        mount(AppContainer, {
+            main: <ProfileEditContainer />
         });
     }
 });
 
-
 FlowRouter.route('/users', {
     name: 'Users.list',
     action() {
-        mount(App, {
-            main: <UsersListPage />
+        mount(AppContainer, {
+            main: <UsersListContainer />
         });
     }
 });
