@@ -83,6 +83,16 @@ npm run lint
 - autopublish             # Publish all data to the clients (for prototyping)
 - insecure                # Allow all DB writes from clients (for prototyping)
 
+### Storybook
+
+React Storybook is a UI development environment for your React components. With it, you can visualize different states of your UI components and develop them interactively.
+
+##### To run storybook
+
+```shell
+npm run storybook
+```
+
 ### Notes
 
 - https://facebook.github.io/react/docs/component-specs.html
