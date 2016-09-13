@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
+import _ from 'underscore';
 
 import LinksListPage from '../pages/LinksListPage.jsx';
 
@@ -10,9 +11,9 @@ export default createContainer(() => {
     let limit = 2;
     let totalItems = 0;
 
-    Tracker.autorun(function () {
+    Tracker.autorun(() => {
         let query = FlowRouter.getQueryParam('query');
-        let page = FlowRouter.getQueryParam('page');
+        let page = !_.isUndefined(FlowRouter.getQueryParam('page')) ? FlowRouter.getQueryParam('page') : 1;
         let skip = (page-1) * limit;
 
         //to request data from db via server, for security from publications

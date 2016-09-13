@@ -4,7 +4,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import Header from '../components/Header.jsx';
 import ConnectionNotification from '../components/ConnectionNotification.jsx';
 
-export default class App extends Component {
+class App extends Component {
     render() {
         const {
             user,
@@ -29,3 +29,5 @@ App.propTypes = {
     user: React.PropTypes.object,      // current meteor user
     connected: React.PropTypes.bool   // server connection status
 };
+
+export default App;

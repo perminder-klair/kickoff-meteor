@@ -3,6 +3,10 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 import { Links } from '../../links/links.js';
 
+Meteor.publish('current.user', function currentUserPublication() {
+    return Meteor.users.find({_id: this.userId}, {fields: Meteor.users.publicFields})
+});
+
 Meteor.publish('users.single', function usersSinglePublication(_id) {
     new SimpleSchema({
         _id: { type: String }

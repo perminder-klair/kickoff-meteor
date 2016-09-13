@@ -1,10 +1,11 @@
 import { Meteor } from 'meteor/meteor'
 import React, { Component, PropTypes } from 'react';
 import { alertify } from 'meteor/ovcharik:alertifyjs';
+import _ from 'underscore';
 
 import ProfileForm from '../components/ProfileForm';
 
-export default class ProfileEditPage extends Component {
+class ProfileEditPage extends Component {
     handleSubmit(doc) {
         Meteor.call('users.update', doc, (err) => {
             if (err) {
@@ -34,3 +35,5 @@ export default class ProfileEditPage extends Component {
 ProfileEditPage.propTypes = {
     user: PropTypes.object
 };
+
+export default ProfileEditPage;

@@ -5,12 +5,11 @@ import _ from 'underscore';
 Meteor.methods({
     'users.update'({ first_name, last_name, location, profilePicture }) {
         new SimpleSchema({
-            id: { type: String },
             first_name: { type: String },
             last_name: { type: String },
             location: { type: String },
             profilePicture: { type: String, optional: true }
-        }).validate({ id, first_name, last_name, location, profilePicture });
+        }).validate({ first_name, last_name, location, profilePicture });
 
         // Make sure the user is logged in before inserting a task
         if (!this.userId) {

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import _ from 'underscore';
 
-export default class UserListItem extends Component {
+class UserListItem extends Component {
     fullName() {
         let { user } = this.props;
 
@@ -34,7 +34,8 @@ export default class UserListItem extends Component {
     }
 }
 
-
 UserListItem.propTypes = {
     user: PropTypes.object.isRequired
 };
+
+export default UserListItem;

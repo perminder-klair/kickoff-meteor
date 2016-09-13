@@ -6,13 +6,15 @@ import { alertify } from 'meteor/ovcharik:alertifyjs';
 import LinkForm from '../components/LinkForm.jsx';
 import Loading from '../../core/components/Loading.jsx';
 
-export default class LinksUpdatePage extends Component {
+class LinksUpdatePage extends Component {
     handleSubmit(doc) {
-        Meteor.call('links.update', this.props.link._id, doc, (err) => {
+        let { link } = this.props;
+
+        Meteor.call('links.update', link._id, doc, (err) => {
             if (!err) {
                 //redirect back to venues page
                 alertify.success('Link updated successfully!');
-                FlowRouter.go('Links.view', {id: this.props.venue._id});
+                FlowRouter.go('Links.view', {id: link._id});
             } else {
                 //throw error
                 console.log(err);
@@ -22,14 +24,16 @@ export default class LinksUpdatePage extends Component {
     }
 
     render() {
-        if (this.props.loading) {
+        let { loading, link } = this.props;
+
+        if (loading) {
             return <Loading />
         } else {
             return (
                 <div className="ui container">
-                    <h1 className="ui header">Edit venue</h1>
+                    <h1 className="ui header">Edit link</h1>
                     <LinkForm
-                        link={this.props.link}
+                        link={link}
                         handleSubmit={this.handleSubmit.bind(this)}/>
                 </div>
             )
@@ -45,3 +49,5 @@ LinksUpdatePage.propTypes = {
     link: PropTypes.object,
     loading: PropTypes.bool
 };
+
+export default LinksUpdatePage;

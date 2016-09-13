@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
+import _ from 'underscore';
 
 import TextInputGroup from '../../core/elements/TextInputGroup';
 import ImageUploadGroup from '../../core/elements/ImageUploadGroup';
 
-export default class ProfileForm extends Component {
+class ProfileForm extends Component {
     constructor(props) {
         super(props);
 
@@ -51,3 +52,5 @@ ProfileForm.propTypes = {
     user: PropTypes.object,
     handleSubmit: PropTypes.func.isRequired
 };
+
+export default ProfileForm;

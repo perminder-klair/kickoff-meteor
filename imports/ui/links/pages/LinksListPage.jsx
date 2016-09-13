@@ -6,11 +6,11 @@ import { Counts } from 'meteor/tmeasday:publish-counts';
 
 import LinkItem from '../components/LinkItem';
 
-export default class LinksListPage extends Component {
+class LinksListPage extends Component {
     pagination() {
         let pagesCount = this.props.totalItems / this.props.limit;
         var rows = [];
-        for (var i=1; i < pagesCount+1; i++) {
+        for (let i=1; i < pagesCount+1; i++) {
             rows.push(<a key={i} className="item" href={FlowRouter.path('Links.list', {}, {page: i})}>{i}</a>);
         }
         return <ul className="ui tiny horizontal divided list">{rows}</ul>;
@@ -52,3 +52,5 @@ LinksListPage.propTypes = {
     totalItems: PropTypes.number.isRequired,
     limit: PropTypes.number.isRequired
 };
+
+export default LinksListPage;

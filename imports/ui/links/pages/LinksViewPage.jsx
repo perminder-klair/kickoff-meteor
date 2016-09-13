@@ -6,7 +6,7 @@ import { alertify } from 'meteor/ovcharik:alertifyjs';
 import Loading from '../../core/components/Loading.jsx';
 import LinkImage from '../components/LinkImage';
 
-export default class LinksViewPage extends Component {
+class LinksViewPage extends Component {
     delete() {
         Meteor.call('links.remove', this.props.venue._id, (err) => {
             if (err) {
@@ -48,3 +48,5 @@ LinksViewPage.propTypes = {
     link: PropTypes.object,
     loading: PropTypes.bool
 };
+
+export default LinksViewPage;

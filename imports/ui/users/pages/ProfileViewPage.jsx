@@ -8,7 +8,7 @@ import LinkItem from '../../links/components/LinkItem';
 import ProfilePicture from '../components/ProfilePicture';
 import SubscribeUserBtn from '../components/SubscribeUserBtn';
 
-export default class ProfileViewPage extends Component {
+class ProfileViewPage extends Component {
     render() {
         if (_.isUndefined(this.props.user)) {
             return <Loading />
@@ -47,3 +47,5 @@ ProfileViewPage.propTypes = {
     links: PropTypes.array.isRequired,
     isCurrentUser: PropTypes.bool.isRequired
 };
+
+export default ProfileViewPage;

@@ -5,7 +5,7 @@ import { alertify } from 'meteor/ovcharik:alertifyjs';
 
 import LinkForm from '../components/LinkForm.jsx';
 
-export default class LinksCreatePage extends Component {
+class LinksCreatePage extends Component {
     handleSubmit(doc) {
         Meteor.call('links.insert', doc, function (err) {
             if (!err) {
@@ -29,3 +29,5 @@ export default class LinksCreatePage extends Component {
         )
     }
 }
+
+export default LinksCreatePage;

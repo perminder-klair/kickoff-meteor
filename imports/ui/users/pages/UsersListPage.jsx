@@ -4,7 +4,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 
 import UserListItem from '../components/UserListItem';
 
-export default class UsersListPage extends Component {
+class UsersListPage extends Component {
     render() {
         let { users } = this.props;
 
@@ -22,3 +22,5 @@ export default class UsersListPage extends Component {
 UsersListPage.propTypes = {
     users: PropTypes.array.isRequired
 };
+
+export default UsersListPage;

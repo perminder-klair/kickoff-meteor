@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 
-export default class DashboardPage extends Component {
+class DashboardPage extends Component {
     render() {
         return (
             <div className="ui container">
@@ -11,3 +11,5 @@ export default class DashboardPage extends Component {
         );
     }
 }
+
+export default DashboardPage;

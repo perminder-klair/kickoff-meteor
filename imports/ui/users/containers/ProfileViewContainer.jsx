@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
+import _ from 'underscore';
 
 import ProfileViewPage from '../pages/ProfileViewPage.jsx';
 

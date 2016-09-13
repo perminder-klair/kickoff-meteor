@@ -7,7 +7,7 @@ import LinksUpdatePage from '../pages/LinksUpdatePage.jsx';
 import { Links } from '../../../api/links/links';
 
 export default createContainer((props) => {
-    let handle = Meteor.subscribe('venues.single', props.id);
+    let handle = Meteor.subscribe('links.single', props.id);
 
     return {
         loading: !handle.ready(),

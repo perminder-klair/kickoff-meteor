@@ -32,7 +32,7 @@ FlowRouter.triggers.enter([guestsOnly], {
 
 //global subscriptions by default meteor send user with 3 fields, but we asking for all fields
 FlowRouter.subscriptions = function () {
-    this.register('users.single', Meteor.subscribe('users.single', Meteor.userId()));
+    this.register('users.single', Meteor.subscribe('current.user'));
 };
 
 FlowRouter.notFound = {
@@ -49,7 +49,6 @@ FlowRouter.notFound = {
 FlowRouter.route('/', {
     name: 'Dashboard',
     action() {
-        console.log('load dashboard');
         mount(AppContainer, {
             main: <DashboardPage/>
         });

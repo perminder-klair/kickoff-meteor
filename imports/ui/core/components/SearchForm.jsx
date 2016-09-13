@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import _ from 'underscore';
 
-export default class SearchForm extends Component {
+class SearchForm extends Component {
     constructor(props) {
         super(props);
 
@@ -10,7 +10,6 @@ export default class SearchForm extends Component {
             query: !_.isUndefined(FlowRouter.getQueryParam('query')) ? FlowRouter.getQueryParam('query') : ''
         };
     }
-
 
     handleSubmit(event) {
         event.preventDefault();
@@ -33,3 +32,5 @@ export default class SearchForm extends Component {
         )
     }
 }
+
+export default SearchForm;

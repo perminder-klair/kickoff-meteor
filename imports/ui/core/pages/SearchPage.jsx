@@ -4,7 +4,7 @@ import React, { Component, PropTypes } from 'react';
 import LinkItem from '../../links/components/LinkItem';
 import Loading from '../components/Loading';
 
-export default class SearchPage extends Component {
+class SearchPage extends Component {
     render() {
         let { links, loading } = this.props;
 
@@ -35,3 +35,5 @@ SearchPage.propTypes = {
     links: PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired
 };
+
+export default SearchPage;

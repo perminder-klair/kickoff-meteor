@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Slingshot } from 'meteor/edgee:slingshot';
 
-export default class ImageUploadGroup extends Component {
+class ImageUploadGroup extends Component {
     constructor(props) {
         super(props);
 
@@ -15,9 +15,7 @@ export default class ImageUploadGroup extends Component {
         let file = event.target.files[0];
         var uploader = new Slingshot.Upload("imageUpload");
 
-        //let self = this;old way
-        //uploader.send(file, function (error, downloadUrl) {//oldway
-        uploader.send(file, (error, downloadUrl) => {//mewway
+        uploader.send(file, (error, downloadUrl) => {
             if (error) {
                 // Log service detailed response.
                 console.error('Error uploading', uploader.xhr.response);
@@ -25,7 +23,6 @@ export default class ImageUploadGroup extends Component {
             }
             else {
                 console.log(downloadUrl);
-                //self.setState({//old way
                 this.props.onChange(downloadUrl);
             }
 
@@ -51,3 +48,5 @@ ImageUploadGroup.propTypes = {
     label: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired
 };
+
+export default ImageUploadGroup;

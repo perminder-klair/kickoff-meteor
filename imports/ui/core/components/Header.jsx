@@ -5,7 +5,7 @@ import _ from 'underscore';
 
 import SearchForm from './SearchForm';
 
-export default class Header extends Component {
+class Header extends Component {
     logout() {
         AccountsTemplates.logout();
     }
@@ -51,3 +51,5 @@ Header.defaultProps = {
 Header.propTypes = {
     user: PropTypes.object
 };
+
+export default Header;

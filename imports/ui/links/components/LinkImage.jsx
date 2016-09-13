@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import _ from 'underscore';
 
-export default class LinkImage extends Component {
+class LinkImage extends Component {
     render() {
         let { link } = this.props;
         let image = '/images/placeholder.jpg';
@@ -20,3 +21,5 @@ export default class LinkImage extends Component {
 LinkImage.propTypes = {
     link: PropTypes.object
 };
+
+export default LinkImage;

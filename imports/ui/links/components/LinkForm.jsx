@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
+import _ from 'underscore';
 
 import ImageUploadGroup from '../../core/elements/ImageUploadGroup';
 import TextInputGroup from '../../core/elements/TextInputGroup';
 
-export default class LinkForm extends Component {
+class LinkForm extends Component {
     constructor(props) {
         super(props);
 
@@ -46,3 +47,5 @@ LinkForm.propTypes = {
     link: PropTypes.object,
     handleSubmit: PropTypes.func
 };
+
+export default LinkForm;

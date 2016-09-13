@@ -4,7 +4,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import LinkImage from '../components/LinkImage';
 
-export default class LinkItem extends Component {
+class LinkItem extends Component {
     render() {
         let { link } = this.props;
 
@@ -24,3 +24,5 @@ export default class LinkItem extends Component {
 LinkItem.propTypes = {
     link: PropTypes.object.isRequired
 };
+
+export default LinkItem;
