@@ -1,11 +1,12 @@
 import { Meteor } from 'meteor/meteor'
 import React, { Component, PropTypes } from 'react';
+import { alertify } from 'meteor/ovcharik:alertifyjs';
 
 import ProfileForm from '../components/ProfileForm';
 
 export default class ProfileEditPage extends Component {
     handleSubmit(doc) {
-        Meteor.call('users.update', this.props.user._id, doc, (err) => {
+        Meteor.call('users.update', doc, (err) => {
             if (err) {
                 console.log(err);
                 alertify.error(err.reason);

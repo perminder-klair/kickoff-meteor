@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
+import { alertify } from 'meteor/ovcharik:alertifyjs';
 
 import TextInputGroup from '../elements/TextInputGroup.jsx';
 import TextAreaGroup from '../elements/TextAreaGroup.jsx';
 
-export default class ContactPage extends Component {
+class ContactPage extends Component {
     constructor(props) {
         super(props);
 
@@ -24,7 +25,7 @@ export default class ContactPage extends Component {
                 console.log(err);
                 alertify.error(err.reason);
             } else {
-                alertify.success('Message sent successfully!');
+                alertify.success('Thank you for contenting us, we will get in touch shortly!');
                 this.setState({
                     full_name: '', //reset
                     message: '', //reset
@@ -73,3 +74,5 @@ export default class ContactPage extends Component {
         )
     }
 }
+
+export default ContactPage;

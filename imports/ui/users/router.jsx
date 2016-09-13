@@ -6,12 +6,31 @@ import AppContainer from '../core/containers/AppContainer.jsx';
 import ProfileViewContainer from '../../ui/users/containers/ProfileViewContainer.jsx';
 import ProfileEditContainer from '../../ui/users/containers/ProfileEditContainer.jsx';
 import UsersListContainer from '../../ui/users/containers/UsersListContainer.jsx';
+import LoginPage from './pages/LoginPage';
+
+FlowRouter.route('/login', {
+    name: 'Login',
+    action() {
+        mount(AppContainer, {
+            main: <LoginPage type="signIn"/>
+        });
+    }
+});
+
+FlowRouter.route('/sign-up', {
+    name: 'Signup',
+    action() {
+        mount(AppContainer, {
+            main: <LoginPage type="signUp"/>
+        });
+    }
+});
 
 FlowRouter.route('/user/:id', {
     name: 'User.view',
     action(params) {
         mount(AppContainer, {
-            main: <ProfileViewPage id={params.id}/>
+            main: <ProfileViewContainer id={params.id}/>
         });
     }
 });

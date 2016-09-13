@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import _ from 'underscore';
+import { alertify } from 'meteor/ovcharik:alertifyjs';
 
 class SubscribeUserBtn extends Component {
     subscribe() {

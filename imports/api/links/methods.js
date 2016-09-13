@@ -5,27 +5,34 @@ import _ from 'underscore';
 import { Links } from './links.js';
 
 Meteor.methods({
-    'links.insert'(doc) {
+    'links.insert'({ text, url, featuredImage }) {
         new SimpleSchema({
-            doc: { type: Object }
-        }).validate({ doc });
+            text: { type: String },
+            url: { type: String },
+            featuredImage: { type: String, optional: true }
+        }).validate({ text, url, featuredImage });
 
         // Make sure the user is logged in before inserting a task
         if (! Meteor.userId()) {
             throw new Meteor.Error('not-authorized');
         }
 
-        Links.insert(_.extend(doc, {
+        return Links.insert({
+            text,
+            url,
+            featuredImage,
             createdAt: new Date(),
             owner: Meteor.userId()
-        }));
+        });
     },
 
-    'links.update'(linkId, doc) {
+    'links.update'(linkId, { text, url, featuredImage }) {
         new SimpleSchema({
             linkId: { type: String },
-            doc: { type: Object }
-        }).validate({ linkId, doc });
+            text: { type: String },
+            url: { type: String },
+            featuredImage: { type: String, optional: true }
+        }).validate({ linkId, text, url, featuredImage });
 
         // Make sure the user is logged in before inserting a task
         if (! Meteor.userId()) {
@@ -39,7 +46,9 @@ Meteor.methods({
             throw new Meteor.Error('not-authorized');
         }
 
-        Links.update(linkId, { $set: doc });
+        return Links.update(linkId, { $set: {
+            text, url, featuredImage
+        } });
     },
 
     'links.remove'(linkId) {
@@ -59,6 +68,6 @@ Meteor.methods({
             throw new Meteor.Error('not-authorized');
         }
 
-        Links.remove(linkId);
+        return Links.remove(linkId);
     }
 });

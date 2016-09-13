@@ -1,29 +1,32 @@
 import { Meteor } from 'meteor/meteor';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import _ from 'underscore';
 
 Meteor.methods({
-    'users.update'(id, doc) {
+    'users.update'({ first_name, last_name, location, profilePicture }) {
         new SimpleSchema({
             id: { type: String },
-            doc: { type: Object }
-        }).validate({ id, doc });
+            first_name: { type: String },
+            last_name: { type: String },
+            location: { type: String },
+            profilePicture: { type: String, optional: true }
+        }).validate({ id, first_name, last_name, location, profilePicture });
 
         // Make sure the user is logged in before inserting a task
-        if (!Meteor.userId()) {
+        if (!this.userId) {
             throw new Meteor.Error('not-authorized');
         }
 
-        Meteor.users.update(id, {
+        return Meteor.users.update(this.userId, {
             '$set': {
-                'profile.first_name': doc.first_name,
-                'profile.last_name': doc.last_name,
-                'profile.location': doc.location,
-                'profile.profilePicture': doc.profilePicture
+                'profile.first_name': first_name,
+                'profile.last_name': last_name,
+                'profile.location': location,
+                'profile.profilePicture': profilePicture
             }
         });
-
-        return true;
     },
+
     'users.subscribe'(userId) {
         new SimpleSchema({
             userId: { type: String }
@@ -45,11 +48,15 @@ Meteor.methods({
             $inc: {subscribedToCount: 1},
             $push: {subscribedTo: userId}
         });
+
         Meteor.users.update({_id: userId}, {
             $inc: {subscribersCount: 1},
             $push: {subscribers: this.userId}
         });
+
+        return true;
     },
+
     'users.unSubscribe'(userId) {
         new SimpleSchema({
             userId: { type: String }
@@ -71,9 +78,12 @@ Meteor.methods({
             $inc: {subscribedToCount: -1},
             $pull: {subscribedTo: userId}
         });
+
         Meteor.users.update({_id: userId}, {
             $inc: {subscribersCount: -1},
             $pull: {subscribers: this.userId}
         });
+
+        return true;
     }
 });

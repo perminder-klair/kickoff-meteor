@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import { alertify } from 'meteor/ovcharik:alertifyjs';
 
 import LinkForm from '../components/LinkForm.jsx';
 

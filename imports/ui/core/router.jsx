@@ -8,7 +8,6 @@ import AppContainer from './containers/AppContainer';
 import DashboardPage from './pages/DashboardPage';
 import ContactPage from './pages/ContactPage';
 import SearchContainer from './containers/SearchContainer';
-import LoginPage from './pages/LoginPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 let loggedInOnly = function (context, redirect) {
@@ -37,7 +36,7 @@ FlowRouter.subscriptions = function () {
 };
 
 FlowRouter.notFound = {
-    action: function () {
+    action() {
         mount(AppContainer, {
             main: <NotFoundPage/>
         });
@@ -50,26 +49,9 @@ FlowRouter.notFound = {
 FlowRouter.route('/', {
     name: 'Dashboard',
     action() {
+        console.log('load dashboard');
         mount(AppContainer, {
             main: <DashboardPage/>
-        });
-    }
-});
-
-FlowRouter.route('/login', {
-    name: 'Login',
-    action() {
-        mount(AppContainer, {
-            main: <LoginPage type="signIn"/>
-        });
-    }
-});
-
-FlowRouter.route('/sign-up', {
-    name: 'Signup',
-    action() {
-        mount(AppContainer, {
-            main: <LoginPage type="signUp"/>
         });
     }
 });

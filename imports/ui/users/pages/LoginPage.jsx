@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { AccountsTemplates } from 'meteor/useraccounts:core';
 
-import AccountsUIWrapper from '../layouts/AccountsUIWrapper';
+import AccountsUIWrapper from '../../core/layouts/AccountsUIWrapper';
 
-export default class LoginPage extends Component {
+class LoginPage extends Component {
     /**
      * Loads as soon as this class loads
      */
@@ -20,7 +20,6 @@ export default class LoginPage extends Component {
     render() {
         return (
             <div className="ui container">
-                <h1 className="ui header">Login</h1>
                 <AccountsUIWrapper />
             </div>
         )
@@ -30,3 +29,5 @@ export default class LoginPage extends Component {
 LoginPage.propTypes = {
     type: PropTypes.string.isRequired
 };
+
+export default LoginPage;

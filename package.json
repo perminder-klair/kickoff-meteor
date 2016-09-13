@@ -8,8 +8,10 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "bcrypt": "^0.8.7",
     "classnames": "^2.2.5",
     "meteor-node-stubs": "~0.2.3",
+    "moment": "^2.15.0",
     "react": "^15.3.0",
     "react-addons-pure-render-mixin": "^15.3.0",
     "react-dom": "^15.3.0",

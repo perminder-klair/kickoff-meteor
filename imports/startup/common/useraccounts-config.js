@@ -1,10 +1,5 @@
-import { Accounts } from 'meteor/accounts-base';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import {AccountsTemplates} from 'meteor/useraccounts:core';
-
-Accounts.ui.config({
-    passwordSignupFields: 'USERNAME_ONLY'
-});
+import { AccountsTemplates } from 'meteor/useraccounts:core';
 
 AccountsTemplates.configure({
     // Behavior

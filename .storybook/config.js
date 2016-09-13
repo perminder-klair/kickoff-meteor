@@ -5,6 +5,7 @@ function loadStories() {
     require('../stories');
     require('../imports/ui/core/elements/stories');
     require('../imports/ui/core/components/stories');
+    require('../imports/ui/users/components/stories');
 }
 
 configure(loadStories, module);

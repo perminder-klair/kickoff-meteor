@@ -1,7 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 
 //only run on server NOT CLIENT
-Accounts.onCreateUser(function(options, user) {
+Accounts.onCreateUser((options, user) => {
+    console.log('options', options);
     user.profile = {};
     user.profile.first_name = options.profile.first_name;
     user.profile.last_name = options.profile.last_name;
@@ -10,7 +11,7 @@ Accounts.onCreateUser(function(options, user) {
     return user;
 });
 
-Accounts.onLogin(function(data) {
+Accounts.onLogin((data) => {
     Meteor.users.update(data.user._id, {
         '$set': {
             lastLoginAt: new Date()
