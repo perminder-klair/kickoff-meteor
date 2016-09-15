@@ -2,6 +2,8 @@
 
 A boilerplate made using MeteorJs, ReactJs and Semantic UI.
 
+[![Deploy][heroku_button]][heroku_deploy]
+
 ### Pages included to quick start a project:
 
 - Welcome page
