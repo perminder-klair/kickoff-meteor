@@ -1,0 +1,19 @@
+{
+  "name": "Kickoff Meteor",
+  "description": "Meteor project to be used as starting point",
+  "repository": "https://github.com/perminder-klair/kickoff-meteor",
+  "logo": "https://d14xs1qewsqjcd.cloudfront.net/assets/logo.svg",
+  "keywords": ["meteor", "boilerplate", "kickoff"],
+  "website": "https://github.com/perminder-klair/kickoff-meteor",
+  "env": {
+    "BUILDPACK_URL": "https://github.com/AdmitHub/meteor-buildpack-horse.git",
+    "ROOT_URL": {
+      "description": "IMPORTANT! Please replace <App Name> with the value provided on the top. This will be the full URL of your app.",
+      "value": "https://<App Name>.herokuapp.com"
+    }
+  },
+  "addons": [
+    "mongolab",
+    "logentries"
+  ]
+}
