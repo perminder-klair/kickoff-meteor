@@ -2,7 +2,7 @@
 
 A boilerplate made using MeteorJs, ReactJs and Semantic UI.
 
-[![Deploy][heroku_button]][heroku_deploy]
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ### Pages included to quick start a project:
 
